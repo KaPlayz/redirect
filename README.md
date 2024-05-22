@@ -1,5 +1,5 @@
 # redirect
 
 By KaPlayz, 
-Link: kaplayz.github.io/redirect,
+Link: [here](kaplayz.github.io/redirect),
 Add /site=(your site) at the end
