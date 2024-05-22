@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        // Function to get URL parameters
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            let results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get the 'site' parameter from the URL
+        let site = getParameterByName('site');
+
+        // Redirect if the 'site' parameter is present
+        if (site) {
+            // Validate the site URL
+            if (site.startsWith('http://') || site.startsWith('https://')) {
+                window.location.href = site;
+            } else {
+                document.write("Invalid site URL. Please include 'http://' or 'https://'.");
+            }
+        } else {
+            document.write("No site parameter provided.");
+        }
+    </script>
+</head>
+<body>
+    <p>If you are not redirected automatically, make sure your URL includes the 'site' parameter like this: <br>
+    <code>https://kaplayz.github.io?site=https://example.com</code></p>
+</body>
+</html>
