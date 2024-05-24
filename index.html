@@ -42,12 +42,19 @@
         function redirect() {
             // Get the 'site' parameter from the URL
             let site = getParameterByName('site');
+            // Get the 'time' parameter from the URL
+            let time = getParameterByName('time');
+
+            // Set a default time if the 'time' parameter is not present or invalid
+            time = time && !isNaN(time) ? parseInt(time) : 3000;
 
             // Redirect if the 'site' parameter is present
             if (site) {
                 // Validate the site URL
                 if (site.startsWith('http://') || site.startsWith('https://')) {
-                    window.location.href = site;
+                    setTimeout(function() {
+                        window.location.href = site;
+                    }, time);
                 } else {
                     document.body.innerHTML = "<p>Invalid site URL. Please include 'http://' or 'https://'.</p>";
                 }
@@ -56,16 +63,16 @@
             }
         }
 
-        // Wait 3 seconds and then run redirect
+        // Wait and then run redirect
         window.onload = function() {
-            setTimeout(redirect, 3000);
+            redirect();
         }
     </script>
 </head>
 <body>
     <div id="loading"></div>
-    <p>The site loads 3 seconds</p>
+    <p>The site loads in the specified time.</p>
     <p>If you are not redirected automatically, make sure your URL includes the 'site' parameter like this:<br>
-    <code>https://kaplayz.github.io/redirect?site=https://example.com</code></p>
+    <code>https://kaplayz.github.io/redirect?site=https://example.com&time=5000</code></p>
 </body>
 </html>
