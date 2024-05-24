@@ -2,4 +2,4 @@
 
 By KaPlayz, 
 Link: [here](kaplayz.github.io/redirect),
-Add /site=(your site) at the end
+Add ?site=(your site)&time=(time to redirect in milliseconds) at the end
